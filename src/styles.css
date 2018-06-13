@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.cheader{
+	height:50px;
+	overflow: hidden;
+  	background-color: #f1f1f1;
+ 	padding:10px;
+}
+
+.file-select{
+	margin-top:20px;
+	margin-bottom: 20px;
+	
+}
