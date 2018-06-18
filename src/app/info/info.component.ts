@@ -40,9 +40,8 @@ export class InfoComponent implements OnInit {
       let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         
-        return this.http.post(AppSettings.API_ENDPOINT+'action.php?request=info', {
-          headers: headers,
-          DocumentID: document_id,
+        return this.http.post(AppSettings.API_ENDPOINT+'index.php?', {'request':'info', 'DocumentID': document_id}, {
+          headers: headers
          }).subscribe(
           result => { if(result.json().status == 'success'){this.info_view = result.json().info;console.log(result.json().info)} }
         );
