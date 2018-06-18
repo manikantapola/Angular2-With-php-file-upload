@@ -28,7 +28,7 @@ export class ListComponent implements OnInit {
 	  fieldReset :true,
 	  maxUploads:5,
     autoUpload: false
-	};
+  };
     sizeLimit = 240000;
  
     constructor(private http:Http, private router:Router, private renderer:Renderer){
@@ -43,11 +43,20 @@ export class ListComponent implements OnInit {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
+        return this.http.post(AppSettings.API_ENDPOINT+'index.php', {'request':'getList'} , {
+          headers: headers
+        }).subscribe(
+          result => { this.list = result.json().data;}
+        );
+
+
+        /*  
         return this.http.post(AppSettings.API_ENDPOINT+'action.php?request=getList', {
           headers: headers
         }).subscribe(
           result => { this.list = result.json().data;}
         );
+        */
     }
 
     upload(){
@@ -97,9 +106,8 @@ export class ListComponent implements OnInit {
       let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         
-        return this.http.post(AppSettings.API_ENDPOINT+'action.php?request=delete', {
-          headers: headers,
-          DocumentID: document_id,
+        return this.http.post(AppSettings.API_ENDPOINT+'index.php', {'request':'delete', 'DocumentID': document_id},  {
+          headers: headers
          }).subscribe(
           result => { if(result.json().status == 'success'){ alert('Deleted Successfully');this.getData();} }
         );
