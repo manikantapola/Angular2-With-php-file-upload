@@ -1,3 +1,3 @@
 export class AppSettings {
-   public static API_ENDPOINT = 'http://localhost/angularTest/';
+   public static API_ENDPOINT = 'http://localhost/fission/';
 }
